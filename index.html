@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Document</title>
+</head>
+
+
+    <div class="main">
+        <div class="left">
+            <img src="./Images/pic1.png" alt="">
+            &nbsp;&nbsp;<p>Text Utils</p>
+        </div>
+        <div class="right">
+            <button id="mode">Dark Mode On</button>
+            <button id="modeoff">Dark Mode Off</button>
+            <button id="btn1">More Info</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="txtpart">
+            <textarea autofocus name="" id="txta" cols="90" rows="23" placeholder="Enter Text Here..."></textarea>
+        </div>
+        <div class="see">
+            <ul><br>
+                <li>Convert To Uppercase</li><br>
+                <li>Convert To Lowercase</li><br>
+                <li>Clear Text</li><br>
+                <li>Counting Latters</li><br>
+                <li>Counting Words</li><br>
+            </ul>
+        </div>
+    </div>
+    <div class="btns">
+        <button id="btn2">Convert Uppercase</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn3">Convert
+            Lowercase</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn4">Clear
+            Text</button>&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn5">Latters
+            Count</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn6">Words
+            Count</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btn7">Preview ↓</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </div>
+  
+    <br class="bottom" id="preview">
+
+        <p id="pr">
+            Your Text Is :</br>
+        </p>
+    </div>
+</body>
+<script>
+    $(Document).ready(function () {
+        $(".see").hide();
+        $("#btn1").click(function () {
+            $(".see").fadeToggle(3500);
+        })
+
+        $("#btn2").click(function () {
+            $("#txta").val($("#txta").val().toUpperCase());
+        })
+
+        $("#btn3").click(function () {
+            $("#txta").val($("#txta").val().toLowerCase());
+        })
+        $("#btn4").click(function () {
+            $("#txta").val('');
+            location.reload();
+        })
+        $("#btn5").click(function () {
+            var count = $("#txta").val().length;
+            alert("Latters Is : " + count);
+        })
+
+        $("#btn6").click(function () {
+            var word = $("#txta").val().split(" ").length;
+            alert("Words Is : " + word);
+        })
+
+        $("#btn7").click(function () {
+            $("#pr").append($("#txta").val());
+
+        })
+
+
+        $("#modeoff").css("opacity", "0")
+        $("#mode").click(function () {
+            $("#mode").attr("disabled", false);
+            if (confirm("Are You Sure Dark Mode On !")) {
+                $(".left").css("background-color", "black")
+                $(".right").css("background-color", "black")
+                $(".content").css("background-color", "black")
+                $(".btns").css("background-color", "black")
+                $("#pr").css("background-color", "black")
+                $(this).attr("disabled", true)
+                $(this).css("opacity", "0")
+                $("#modeoff").css("opacity", "1")
+                $("#modeoff").attr("disabled", false)
+            }
+        })
+
+        $("#modeoff").click(function () {
+            $("#modeoff").attr("disabled", false);
+            if (confirm("Are You Sure Dark Mode Off !")) {
+                $(".left").css("background-color", "rgba(0, 0, 0, 0.71)")
+                $(".right").css("background-color", "rgba(0, 0, 0, 0.71)")
+                $(".content").css("background-color", "rgba(0, 0, 0, 0.333)")
+                $(".btns").css("background-color", "rgba(0, 0, 0, 0.333)")
+                $("#pr").css("background-color", "blue")
+                $(this).attr("disabled", true)
+                $("#mode").attr("disabled", false)
+                $(this).css("opacity", "0")
+                $("#mode").css("opacity", "1")
+            }
+        })
+    })
+
+
+
+</script>
+
+</html>
